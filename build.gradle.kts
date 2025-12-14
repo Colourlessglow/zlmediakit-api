@@ -6,7 +6,7 @@ plugins {
 }
 allprojects {
     group = "io.github.colourlessglow"
-    version = "0.0.1-SNAPSHOT"
+    version = "0.0.1"
     repositories {
         mavenCentral()
     }
@@ -27,24 +27,31 @@ subprojects {
     mavenPublishing {
         publishToMavenCentral()
         signAllPublications()
-        pom{
-            licenses{
+        coordinates(group.toString(), project.name, version.toString())
+        pom {
+            // 添加项目基本信息
+            name.set("zlmediakit-api-${project.name}") // 使用项目名称作为后缀
+            description.set("ZLMediaKit API Client for ${project.name}")
+            url.set("https://github.com/colourlessglow/zlmediakit-api")
+            licenses {
                 license {
-                    name = "MIT License"
-                    url = "https://opensource.org/licenses/MIT"
+                    name.set("MIT License")
+                    url.set("https://opensource.org/licenses/MIT")
                 }
             }
             developers {
                 developer {
-                    id = "colourlessglow"
-                    name = "whitekite"
-                    email = "xuxjigsaw@gmail.com"
+                    id.set("colourlessglow")
+                    name.set("whitekite")
+                    email.set("xuxjigsaw@gmail.com")
+                    organization.set("colourlessglow")
+                    organizationUrl.set("https://github.com/Colourlessglow")
                 }
             }
             scm {
-                connection = "scm:git:git://github.com/colourlessglow/zlmediakit-api.git"
-                developerConnection = "scm:git:ssh://github.com:colourlessglow/zlmediakit-api.git"
-                url = "https://github.com/colourlessglow/zlmediakit-api"
+                connection.set("scm:git:git://github.com/colourlessglow/zlmediakit-api.git")
+                developerConnection.set("scm:git:ssh://github.com:colourlessglow/zlmediakit-api.git")
+                url.set("https://github.com/colourlessglow/zlmediakit-api")
             }
         }
     }
