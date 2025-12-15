@@ -12,6 +12,10 @@ data class DeleteRecordDirectoryRequest(
     override var app: String? = null,
     override var stream: String? = null,
     /**
+     * 流的录像日期，格式为2020-01-01,如果不是完整的日期，那么会删除失败
+     */
+    var period: String? = null,
+    /**
      * 录像文件保存自定义根目录，为空则采用配置文件设置
      */
     @SerialName("customized_path")
