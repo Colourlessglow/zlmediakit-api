@@ -1,13 +1,13 @@
 package zlmediakit.api.http
 
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.encodeToJsonElement
+import kotlinx.serialization.json.jsonObject
 import zlmediakit.api.config.HttpConfig
 import zlmediakit.api.exception.ZLMediaKitHttpException
 import zlmediakit.api.exception.ZLMediaKitResponseException
 import zlmediakit.api.model.IZLMediaResponse
 import zlmediakit.api.model.ZLMediaCode
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.decodeFromJsonElement
-import kotlinx.serialization.json.encodeToJsonElement
 import java.io.InputStream
 
 class ZLMediaKitHttp(
@@ -19,7 +19,7 @@ class ZLMediaKitHttp(
         if (request == null) {
             return emptyMap()
         }
-        return Json.decodeFromJsonElement<Map<String, Any?>>(Json.encodeToJsonElement(request))
+        return Json.encodeToJsonElement(request).jsonObject.mapValues { it.value }
     }
 
     fun httpGetParams(params: Map<String, Any?>): LinkedHashMap<String, String> {
@@ -49,6 +49,7 @@ class ZLMediaKitHttp(
         request: Request? = null,
     ): Response {
         val params = requestToQueryParams(request)
+        println("params: $params")
         val body = adapter.httpGet(
             baseUrl = config.baseUrl,
             url = url,
