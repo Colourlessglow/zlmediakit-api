@@ -302,4 +302,202 @@ open class ZLMediaKitClientAdapter(
             request = request
         )
     }
+
+    /**
+     * 获取rtp推流信息(getRtpInfo)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun getRtpInfo(request: GetRtpInfoRequest): GetRtpInfoResponse {
+        if (request.vhost.isNullOrEmpty()) {
+            request.vhost = ZLMediaConstant.DEFAULT_VHOST
+        }
+        return http.httpGetJson<GetRtpInfoRequest, GetRtpInfoResponse>(
+            url = ZLMediaConstant.GET_RTP_INFO,
+            request = request
+        )
+    }
+
+    /**
+     * 获取mp4录像文件(getMp4RecordFile)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun getMp4RecordFile(request: GetMp4RecordFileRequest): GetMp4RecordFileResponse {
+        if (request.vhost.isNullOrEmpty()) {
+            request.vhost = ZLMediaConstant.DEFAULT_VHOST
+        }
+        return http.httpGetJson<GetMp4RecordFileRequest, GetMp4RecordFileResponse>(
+            url = ZLMediaConstant.GET_MP4_RECORD_FILE,
+            request = request
+        )
+    }
+
+    /**
+     * 创建RTP服务器(openRtpServer)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun openRtpServer(request: OpenRtpServerRequest): OpenRtpServerResponse =
+        http.httpGetJson<OpenRtpServerRequest, OpenRtpServerResponse>(
+            url = ZLMediaConstant.OPEN_RTP_SERVER,
+            request = request
+        )
+
+    /**
+     * 关闭RTP服务器(closeRtpServer)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun closeRtpServer(request: CloseRtpServerRequest): CloseRtpServerResponse {
+        if (request.vhost.isNullOrEmpty()) {
+            request.vhost = ZLMediaConstant.DEFAULT_VHOST
+        }
+        return http.httpGetJson<CloseRtpServerRequest, CloseRtpServerResponse>(
+            url = ZLMediaConstant.CLOSE_RTP_SERVER,
+            request = request
+        )
+    }
+
+    /**
+     * 获取RTP服务器列表(listRtpServer)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun listRtpServer(): ListRtpServerResponse =
+        http.httpGetJson<Any, ListRtpServerResponse>(
+        url = ZLMediaConstant.LIST_RTP_SERVER,
+    )
+
+     /**
+     * 开始active模式发送rtp(startSendRtp)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun startSendRtp(request: StartSendRtpRequest): StartSendRtpResponse {
+        if (request.vhost.isNullOrEmpty()) {
+            request.vhost = ZLMediaConstant.DEFAULT_VHOST
+        }
+        return http.httpGetJson<StartSendRtpRequest, StartSendRtpResponse>(
+            url = ZLMediaConstant.START_SEND_RTP,
+            request = request
+        )
+    }
+
+    /**
+     * 开始passive模式发送rtp(startSendRtpPassive)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun startSendRtpPassive(request: StartSendRtpPassiveRequest): StartSendRtpPassiveResponse {
+        if (request.vhost.isNullOrEmpty()) {
+            request.vhost = ZLMediaConstant.DEFAULT_VHOST
+        }
+        return http.httpGetJson<StartSendRtpPassiveRequest, StartSendRtpPassiveResponse>(
+            url = ZLMediaConstant.START_SEND_RTP_PASSIVE,
+            request = request
+        )
+    }
+
+    /**
+     * 停止发送rtp(stopSendRtp)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun stopSendRtp(request: StopSendRtpRequest): ZLMediaResponse {
+        if (request.vhost.isNullOrEmpty()) {
+            request.vhost = ZLMediaConstant.DEFAULT_VHOST
+        }
+        return http.httpGetJson<StopSendRtpRequest, ZLMediaResponse>(
+            url = ZLMediaConstant.STOP_SEND_RTP,
+            request = request
+        )
+    }
+
+     /**
+     * 获取主要对象个数(getStatistic)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun getStatistic(): GetStatisticResponse =
+        http.httpGetJson<Any, GetStatisticResponse>(
+        url = ZLMediaConstant.GET_STATISTIC,
+    )
+
+     /**
+     * 添加rtsp/rtmp/srt推流(addStreamPusherProxy)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun addStreamPusherProxy(request: AddStreamPusherProxyRequest): AddStreamPusherProxyResponse {
+        if (request.vhost.isNullOrEmpty()) {
+            request.vhost = ZLMediaConstant.DEFAULT_VHOST
+        }
+        return http.httpGetJson<AddStreamPusherProxyRequest, AddStreamPusherProxyResponse>(
+            url = ZLMediaConstant.ADD_STREAM_PUSHER_PROXY,
+            request = request
+        )
+    }
+
+    /**
+     * 关闭推流(delStreamPusherProxy)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun delStreamPusherProxy(request: DelStreamPusherProxyRequest): DelStreamPusherProxyResponse =
+        http.httpGetJson<DelStreamPusherProxyRequest, DelStreamPusherProxyResponse>(
+        url = ZLMediaConstant.DEL_STREAM_PUSHER_PROXY,
+        request = request
+    )
+
+    /**
+     * 获取版本信息(version)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun version(): VersionResponse =
+        http.httpGetJson<Any, VersionResponse>(
+        url = ZLMediaConstant.GET_VERSION,
+    )
+
+    /**
+     * 获取媒体流播放器列表(getMediaPlayerList)
+     */
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    fun getMediaPlayerList(request: GetMediaPlayerListRequest): GetMediaPlayerListResponse {
+        if (request.vhost.isNullOrEmpty()) {
+            request.vhost = ZLMediaConstant.DEFAULT_VHOST
+        }
+        return http.httpGetJson<GetMediaPlayerListRequest, GetMediaPlayerListResponse>(
+            url = ZLMediaConstant.GET_MEDIA_PLAYER_LIST,
+            request = request
+        )
+    }
 }

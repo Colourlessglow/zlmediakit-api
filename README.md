@@ -26,6 +26,19 @@ zlmediakit api kotlin 封装请求客户端
 - /index/api/getServerConfig
 - /index/api/setServerConfig
 - /index/api/deleteRecordDirectory
+- /index/api/getRtpInfo
+- /index/api/getMp4RecordFile
+- /index/api/openRtpServer
+- /index/api/closeRtpServer
+- /index/api/listRtpServer
+- /index/api/startSendRtp
+- /index/api/startSendRtpPassive
+- /index/api/stopSendRtp
+- /index/api/getStatistic
+- /index/api/addStreamPusherProxy
+- /index/api/delStreamPusherProxy
+- /index/api/version
+- /index/api/getMediaPlayerList
 
 
 ## 初始化客户端

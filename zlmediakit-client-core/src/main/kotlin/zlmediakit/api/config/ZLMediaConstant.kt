@@ -66,4 +66,43 @@ object ZLMediaConstant {
 
     /** 删除录像文件 */
     const val DELETE_RECORD_DIRECTORY: String = "/index/api/deleteRecordDirectory"
+
+    /** 获取rtp推流信息 */
+    const val GET_RTP_INFO: String = "/index/api/getRtpInfo"
+
+    /** 获取流信息 */
+    const val GET_MP4_RECORD_FILE: String = "/index/api/getMp4RecordFile"
+
+    /** 创建RTP服务器 */
+    const val OPEN_RTP_SERVER: String = "/index/api/openRtpServer"
+
+    /** 关闭RTP服务器 */
+    const val CLOSE_RTP_SERVER: String = "/index/api/closeRtpServer"
+
+    /** 获取RTP服务器列表 */
+    const val LIST_RTP_SERVER: String = "/index/api/listRtpServer"
+
+    /** 开始active模式发送rtp */
+    const val START_SEND_RTP: String = "/index/api/startSendRtp"
+
+    /** 开始passive模式发送rtp */
+    const val START_SEND_RTP_PASSIVE: String = "/index/api/startSendRtpPassive"
+
+    /** 停止 发送rtp */
+    const val STOP_SEND_RTP: String = "/index/api/stopSendRtp"
+
+    /** 获取主要对象个数 */
+    const val GET_STATISTIC: String = "/index/api/getStatistic"
+
+    /** 添加rtsp/rtmp/srt推流 */
+    const val ADD_STREAM_PUSHER_PROXY: String = "/index/api/addStreamPusherProxy"
+
+    /** 关闭推流 */
+    const val DEL_STREAM_PUSHER_PROXY: String = "/index/api/delStreamPusherProxy"
+
+    /** 获取版本信息(version) */
+    const val GET_VERSION: String = "/index/api/version"
+
+    /** 获取媒体流播放器列表 */
+    const val GET_MEDIA_PLAYER_LIST: String = "/index/api/getMediaPlayerList"
 }
