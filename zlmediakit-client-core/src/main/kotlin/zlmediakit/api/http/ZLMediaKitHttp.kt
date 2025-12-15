@@ -33,9 +33,12 @@ class ZLMediaKitHttp(
         }
     }
 
-    fun httpGetParams(params: Map<String, String?>): LinkedHashMap<String, String> {
+    fun httpGetParams(params: Map<String, String?>?): LinkedHashMap<String, String> {
         val queryParams = linkedMapOf<String, String>()
         queryParams["secret"] = config.secret
+        if (params == null) {
+            return queryParams
+        }
         for ((name, value) in params) {
             if (value == null) {
                 continue
@@ -51,15 +54,14 @@ class ZLMediaKitHttp(
         ZLMediaKitHttpException::class,
         ZLMediaKitResponseException::class
     )
-    inline fun <reified Request, reified Response : IZLMediaResponse> httpGetJson(
+    inline fun <reified Response : IZLMediaResponse> httpMapGetJson(
         url: String,
-        request: Request? = null,
+        request: Map<String, String?>? = null,
     ): Response {
-        val params = requestToQueryParams(request)
         val body = adapter.httpGet(
             baseUrl = config.baseUrl,
             url = url,
-            params = httpGetParams(params)
+            params = httpGetParams(request)
         )
         if (body.isEmpty()) {
             throw ZLMediaKitHttpException(message = "请求结果为空")
@@ -82,6 +84,18 @@ class ZLMediaKitHttp(
         }
         return data
     }
+
+    @Throws(
+        ZLMediaKitHttpException::class,
+        ZLMediaKitResponseException::class
+    )
+    inline fun <reified Request, reified Response : IZLMediaResponse> httpGetJson(
+        url: String,
+        request: Request? = null,
+    ): Response = httpMapGetJson<Response>(
+        url = url,
+        request = requestToQueryParams<Request>(request)
+    )
 
     @Throws(
         ZLMediaKitHttpException::class,

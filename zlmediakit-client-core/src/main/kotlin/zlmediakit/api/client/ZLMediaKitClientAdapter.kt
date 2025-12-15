@@ -76,8 +76,8 @@ open class ZLMediaKitClientAdapter(
         ZLMediaKitHttpException::class,
         ZLMediaKitResponseException::class
     )
-    fun setServerConfig(request: Map<String, Any?>): SetServerConfigResponse =
-        http.httpGetJson<Map<String, Any?>, SetServerConfigResponse>(
+    fun setServerConfig(request: Map<String, String>): SetServerConfigResponse =
+        http.httpMapGetJson<SetServerConfigResponse>(
             url = ZLMediaConstant.SET_SERVER_CONFIG,
             request = request
         )
