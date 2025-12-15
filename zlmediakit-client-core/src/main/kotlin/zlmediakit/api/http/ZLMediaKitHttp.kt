@@ -20,7 +20,10 @@ class ZLMediaKitHttp(
         if (request == null) {
             return emptyMap()
         }
-        return Json.encodeToJsonElement<T>(request).jsonObject.mapValues {
+        val json = Json {
+            encodeDefaults = true
+        }
+        return json.encodeToJsonElement<T>(request).jsonObject.mapValues {
             if (it.value.jsonPrimitive.content == "true") {
                 return@mapValues "1"
             } else if (it.value.jsonPrimitive.content == "false") {
@@ -65,6 +68,7 @@ class ZLMediaKitHttp(
         try {
             val json = Json {
                 ignoreUnknownKeys = true
+                encodeDefaults = true
             }
             data = json.decodeFromString<Response>(body)
         } catch (e: Throwable) {
