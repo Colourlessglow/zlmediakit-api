@@ -63,7 +63,10 @@ class ZLMediaKitHttp(
         }
         val data: Response
         try {
-            data = Json.decodeFromString<Response>(body)
+            val json = Json {
+                ignoreUnknownKeys = true
+            }
+            data = json.decodeFromString<Response>(body)
         } catch (e: Throwable) {
             throw ZLMediaKitHttpException(
                 message = "请求结果解析失败",

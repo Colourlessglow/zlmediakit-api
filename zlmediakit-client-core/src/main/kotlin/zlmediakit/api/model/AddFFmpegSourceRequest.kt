@@ -12,27 +12,27 @@ data class AddFFmpegSourceRequest(
      * FFmpeg 拉流地址,支持任意协议或格式(只要 FFmpeg 支持即可)
      */
     @SerialName("src_url")
-    var srcUrl: String,
+    var srcUrl: String = "",
     /**
      * FFmpeg rtmp 推流地址，一般都是推给自己，例如 rtmp://127.0.0.1/live/stream_form_ffmpeg
      */
     @SerialName("dst_url")
-    var dstUrl: String,
+    var dstUrl: String = "",
     /**
      * FFmpeg推流成功超时时间,单位毫秒
      */
     @SerialName("timeout_ms")
-    var timeoutMs: Double,
+    var timeoutMs: Double = 0.0,
     /**
      * 是否转换成 hls-mpegts 协议
      */
     @SerialName("enable_hls")
-    var enableHls: Boolean,
+    var enableHls: Boolean = false,
     /**
      * 是否允许 mp4 录制
      */
     @SerialName("enable_mp4")
-    var enableMp4: Boolean,
+    var enableMp4: Boolean = false,
     /**
      * FFmpeg 命令行参数
      */

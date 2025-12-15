@@ -34,6 +34,8 @@ data class GetMediaListResponse(
         var originUrl: String? = null,
         /** 创建时间戳（GMT unix秒级） */
         var createStamp: Long? = null,
+        /** 当前时间戳（GMT unix秒级） */
+        var currentStamp: Long? = null,
         /** 存活时间（秒） */
         var aliveSecond: Int? = null,
         /** 数据产生速度（byte/s） */
@@ -82,7 +84,7 @@ data class GetMediaListResponse(
         @SerialName("sample_rate")
         var sampleRate: Int? = null,
         /** 视频FPS（仅视频轨道有值） */
-        var fps: Int? = null,
+        var fps: Double? = null,
         /** GOP间隔时间（毫秒，仅视频轨道有值） */
         @SerialName("gop_interval_ms")
         var gopIntervalMs: Int? = null,

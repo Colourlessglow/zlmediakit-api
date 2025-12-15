@@ -10,5 +10,5 @@ data class DelStreamProxyRequest(
     /**
      * addStreamProxy 接口返回的 key
      */
-    var key: String,
+    var key: String = "",
 )
