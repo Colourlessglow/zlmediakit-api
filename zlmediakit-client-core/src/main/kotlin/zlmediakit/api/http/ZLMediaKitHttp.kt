@@ -49,7 +49,6 @@ class ZLMediaKitHttp(
         request: Request? = null,
     ): Response {
         val params = requestToQueryParams(request)
-        println("params: $params")
         val body = adapter.httpGet(
             baseUrl = config.baseUrl,
             url = url,
