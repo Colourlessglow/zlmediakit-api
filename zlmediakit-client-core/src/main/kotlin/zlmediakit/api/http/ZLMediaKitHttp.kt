@@ -41,7 +41,6 @@ class ZLMediaKitHttp(
                 queryParams[name] = value
             }
         }
-        println("queryParams: $queryParams")
         return queryParams
     }
 
