@@ -24,6 +24,9 @@ class ZLMediaKitHttp(
             encodeDefaults = true
         }
         return json.encodeToJsonElement<T>(request).jsonObject.mapValues {
+            if (it.value.jsonPrimitive.content == "null") {
+                return@mapValues null
+            }
             if (it.value.jsonPrimitive.content == "true") {
                 return@mapValues "1"
             } else if (it.value.jsonPrimitive.content == "false") {
