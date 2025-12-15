@@ -8,10 +8,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GetMediaListRequest(
     override var vhost: String? = null,
-    override val app: String? = null,
-    override val stream: String? = null,
+    override var app: String? = null,
+    override var stream: String? = null,
     /**
      * 协议，例如 rtsp或rtmp
      */
-    val schema: String? = null
+    var schema: String? = null
 ) : CommonStreamInfo

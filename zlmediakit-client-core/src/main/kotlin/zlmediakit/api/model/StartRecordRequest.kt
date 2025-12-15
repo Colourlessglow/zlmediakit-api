@@ -10,20 +10,20 @@ import zlmediakit.api.config.ZLMediaConstant
 @Serializable
 data class StartRecordRequest(
     override var vhost: String? = null,
-    override val app: String? = null,
-    override val stream: String? = null,
+    override var app: String? = null,
+    override var stream: String? = null,
     /**
      * 0 为 hls，1 为 mp4
      */
-    val type: Int = ZLMediaConstant.DEFAULT_RECORD_TYPE,
+    var type: Int = ZLMediaConstant.DEFAULT_RECORD_TYPE,
      /**
       * 录像文件保存自定义根目录，为空则采用配置文件设置
       */
     @SerialName("customized_path")
-    val customizedPath: String? = null,
+    var customizedPath: String? = null,
      /**
       * MP4录制的切片时间大小，单位秒
       */
     @SerialName("max_second")
-    val maxSecond: Int? = null,
+    var maxSecond: Int? = null,
 ): CommonStreamInfo

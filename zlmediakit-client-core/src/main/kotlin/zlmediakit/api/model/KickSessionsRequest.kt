@@ -12,11 +12,11 @@ data class KickSessionsRequest(
      * 筛选本机端口，例如筛选rtsp链接：554
      */
     @SerialName("local_port")
-    val localPort: Int? = null,
+    var localPort: Int? = null,
 
     /**
      * 筛选客户端ip
      */
     @SerialName("peer_ip")
-    val peerIP: String? = null,
+    var peerIP: String? = null,
 )

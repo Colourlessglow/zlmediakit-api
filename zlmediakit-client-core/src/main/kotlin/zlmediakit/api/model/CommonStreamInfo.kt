@@ -9,10 +9,10 @@ interface CommonStreamInfo {
     /**
      * 添加的流的应用名，例如 live
      */
-    val app: String?
+    var app: String?
 
     /**
      * 添加的流的 id 名，例如 test
      */
-    val stream: String?
+    var stream: String?
 }

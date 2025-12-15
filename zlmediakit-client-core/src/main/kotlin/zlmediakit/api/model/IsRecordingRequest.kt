@@ -9,10 +9,10 @@ import zlmediakit.api.config.ZLMediaConstant
 @Serializable
 data class IsRecordingRequest(
     override var vhost: String? = null,
-    override val app: String? = null,
-    override val stream: String? = null,
+    override var app: String? = null,
+    override var stream: String? = null,
     /**
      * 0 为 hls，1 为 mp4
      */
-    val type: Int = ZLMediaConstant.DEFAULT_RECORD_TYPE,
+    var type: Int = ZLMediaConstant.DEFAULT_RECORD_TYPE,
 ): CommonStreamInfo

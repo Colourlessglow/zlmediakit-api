@@ -10,5 +10,5 @@ data class KickSessionRequest(
     /**
      * 客户端唯一 id，可以通过 getAllSession 接口获取
      */
-    val id: String,
+    var id: String,
 )
