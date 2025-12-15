@@ -3,6 +3,7 @@ package zlmediakit.api.http
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.encodeToJsonElement
 import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import zlmediakit.api.config.HttpConfig
 import zlmediakit.api.exception.ZLMediaKitHttpException
 import zlmediakit.api.exception.ZLMediaKitResponseException
@@ -15,28 +16,32 @@ class ZLMediaKitHttp(
     val adapter: ZLMediaKitHttpAdapter
 ) {
 
-    inline fun <reified T> requestToQueryParams(request: T?): Map<String, Any?> {
+    inline fun <reified T> requestToQueryParams(request: T?): Map<String, String?> {
         if (request == null) {
             return emptyMap()
         }
-        return Json.encodeToJsonElement(request).jsonObject.mapValues { it.value }
+        return Json.encodeToJsonElement<T>(request).jsonObject.mapValues {
+            if (it.value.jsonPrimitive.content == "true") {
+                return@mapValues "1"
+            } else if (it.value.jsonPrimitive.content == "false") {
+                return@mapValues "0"
+            }
+            return@mapValues it.value.jsonPrimitive.content
+        }
     }
 
-    fun httpGetParams(params: Map<String, Any?>): LinkedHashMap<String, String> {
+    fun httpGetParams(params: Map<String, String?>): LinkedHashMap<String, String> {
         val queryParams = linkedMapOf<String, String>()
         queryParams["secret"] = config.secret
         for ((name, value) in params) {
             if (value == null) {
                 continue
             }
-            if (value is Boolean) {
-                queryParams[name] = if (value) "1" else "0"
-            }
-            val stringValue = "$value"
-            if (stringValue.isNotBlank()) {
-                queryParams[name] = stringValue
+            if (value.isNotBlank()) {
+                queryParams[name] = value
             }
         }
+        println("queryParams: $queryParams")
         return queryParams
     }
 
