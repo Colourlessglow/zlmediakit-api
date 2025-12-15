@@ -8,9 +8,9 @@ import zlmediakit.api.model.ZLMediaResponse
 /**
  * zlmediakit 媒体服务响应异常
  */
-class ZLMediaKitResponseException : Exception {
+class ZLMediaKitResponseException : RuntimeException {
     val code: ZLMediaCode?
-    val response: IZLMediaResponse?
+    val response: IZLMediaResponse
 
     constructor(response: IZLMediaResponse) : super(response.msg) {
         code = ZLMediaCode.fromCode(response.code)
