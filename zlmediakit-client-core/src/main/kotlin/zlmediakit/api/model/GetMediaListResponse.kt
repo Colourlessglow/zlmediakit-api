@@ -8,8 +8,8 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class GetMediaListResponse(
-    override var code: Int?,
-    override var msg: String?,
+    override var code: Int? = null,
+    override var msg: String? = null,
     var data: MutableList<Data> = arrayListOf()
 ) : IZLMediaResponse {
     @Serializable

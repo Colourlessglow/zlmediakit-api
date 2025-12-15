@@ -8,9 +8,9 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class GetAllSessionResponse(
-    override var code: Int?,
-    override var msg: String?,
-    var data: List<Data>
+    override var code: Int? = null,
+    override var msg: String? = null,
+    var data: List<Data> = arrayListOf()
 ) : IZLMediaResponse {
 
     @Serializable

@@ -7,8 +7,8 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class SetServerConfigResponse(
-    override var code: Int?,
-    override var msg: String?,
+    override var code: Int? = null,
+    override var msg: String? = null,
     /**
      * 配置项变更个数
      */
